@@ -32,6 +32,7 @@ Additionally, the filters are implemented in the context of sensor fusion with d
 
 
 The graph below shows the inheritance structure of the various filters
+![alt text][image1]
 
 ## Example usage
 
@@ -39,15 +40,17 @@ The graph below shows the inheritance structure of the various filters
 FusionKF FKF(CONSTANT_VELOCITY); // Sensor fusion controller using constant Vx, Vy model
 FKF.AddLaserLKF(); // adds Lidar Linear Kalman Filter to fusion controller
 FKF.AddRadarEKF(); // adds Radar Extended Kalman Filter to fusion controller
+
+FKF.ProcessMeasurements(Input) // Measurement inputs
 ```
 
 ```
 FusionKF FKF(CONSTANT_TURNRATE_VELOCITY); // Sensor fusion controller using CTRV
 FKF.AddLaserUKF(); // adds Lidar Unscented Kalman Filter to fusion controller
 FKF.AddRadarUKF(); // adds Radar Unscented Kalman Filter to fusion controller
-```
 
-![alt text][image1]
+FKF.ProcessMeasurements(Input) // Measurement inputs
+```
 
 # Input
 
@@ -55,8 +58,8 @@ INPUT: values provided by the simulator to the c++ program
 
 ["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)
 
-For lidar: inputs are position in x and y axis
-For radar: inputs are rho, theta, and rho dot
+1. For lidar: inputs are position in x and y axis
+2. For radar: inputs are rho, theta, and rho dot
 
 
 # Output
@@ -65,30 +68,30 @@ OUTPUT: values provided by the c++ program to the simulator
 
 For Constant Vx and Vy kinematic model
 
-["estimate_x"] <= kalman filter estimated position x
-["estimate_y"] <= kalman filter estimated position y
-["estimate_vx"] <= kalman filter estimated velocity along x axis
-["estimate_vy"] <= kalman filter estimated velocity along y axis
+1. ["estimate_x"] <= kalman filter estimated position x
+2. ["estimate_y"] <= kalman filter estimated position y
+3. ["estimate_vx"] <= kalman filter estimated velocity along x axis
+4. ["estimate_vy"] <= kalman filter estimated velocity along y axis
 
 For Constant turnrate and velocity kinematic model
 
-["estimate_x"] <= kalman filter estimated position x
-["estimate_y"] <= kalman filter estimated position y
-["estimate_v"] <= kalman filter estimated velocity
-["estimate_yaw"] <= kalman filter estimated yaw
-["estimate_yaw_dot"] <= kalman filter estimated yaw rate
+1. ["estimate_x"] <= kalman filter estimated position x
+2. ["estimate_y"] <= kalman filter estimated position y
+3. ["estimate_v"] <= kalman filter estimated velocity
+4. ["estimate_yaw"] <= kalman filter estimated yaw
+5. ["estimate_yaw_dot"] <= kalman filter estimated yaw rate
 
 Both kinematic model produces Root-Mean-Squared-Error below
 
-["rmse_x"]
-["rmse_y"]
-["rmse_vx"]
-["rmse_vy"]
+1. ["rmse_x"]
+2. ["rmse_y"]
+3. ["rmse_vx"]
+4. ["rmse_vy"]
 
 
 # Compile and running the simulator
 
-See [Udacity's Extended Kalman Filter Project page](https://github.com/udacity/CarND-Extended-Kalman-Filter-Project) on instructions to install the Simulator. Once the necessary prerequisites are complete, the main program can be built and run by doing the following from the project top directory.
+See [Udacity's Extended Kalman Filter Project page](https://github.com/udacity/CarND-Extended-Kalman-Filter-Project) on instructions to install the Simulator. Once the necessary prerequisites are completed, the main program can be built and run by doing the following from the project top directory.
 
 1. mkdir build
 2. cd build
