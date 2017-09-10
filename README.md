@@ -1,4 +1,4 @@
-# Extended Kalman Filter Project Starter Code
+# Extended Kalman Filter Project
 Self-Driving Car Engineer Nanodegree Program
 
 This repository utilizes a parametric kalman filter framework to fuse radar and lidar sensor. They are implemented towards Udacity's Self-Driving Car's Term 2 Simulator.
