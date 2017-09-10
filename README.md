@@ -7,6 +7,21 @@ This repository utilizes a parametric kalman filter framework to fuse radar and 
 [//]: # (Image References)
 
 [image1]: diag.png "Parametric Kalman Filter architecture"
+[image2]: SimEKF_Radar_Dataset1.gif "EKF Radar only"
+[image3]: SimEKF_Laser_Dataset1.gif "EKF Lidar only"
+[image4]: SimEKF_Dataset1.gif "EKF Radar and Lidar Dataset 1"
+[image5]: SimEKF_Dataset2.gif "EKF Radar and Lidar Dataset 2"
+
+# Demonstration on Udacity's Term 2 Simulator
+
+## EKF Radar only
+![alt text][image2]
+## EKF Lidar only
+![alt text][image3]
+## EKF Radar and Lidar (Dataset 1)
+![alt text][image4]
+## EKF Radar and Lidar (Dataset 2)
+![alt text][image5]
 
 # Kalman Filter Architecture
 

@@ -1,12 +1,8 @@
-#include "FusionEKF.h"
+#include "fusion_kf.h"
 #include "Eigen/Dense"
 #include <iostream>
 #include <vector>
 
-using namespace std;
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
-using std::vector;
 
 FusionKF::FusionKF(SensorModel Model_in) :
   IsFirstTime (true),
@@ -112,7 +108,7 @@ void FusionKF::ProcessMeasurement(MeasurementPackage &meas_in){
     IsFirstTime = false;
   }
 
-  for (auto &filter : filters_){  
+  for (auto &filter : filters_){
     filter->Step(meas_in);
   }
 }
@@ -125,7 +121,7 @@ VectorXd CalculateRMSE(const vector<VectorXd> &estimations,
 
   if (estimations.size() != ground_truth.size()
      || estimations.size() == 0){
-    cout << "Invalid estimation or ground truth data" << endl;
+    cout << "Invalud estimation or ground truth data" << endl;
     return rmse;
   }
 

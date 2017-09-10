@@ -1,25 +1,16 @@
-#include <iostream>
 #include "tools.h"
 
-using Eigen::VectorXd;
-using Eigen::MatrixXd;
-using std::vector;
 
-Tools::Tools() {}
+void NormToPi(int Row_in, MatrixXd Mat_in) {
 
-Tools::~Tools() {}
+  // normalize value to within pi range
 
-VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
-                              const vector<VectorXd> &ground_truth) {
-  /**
-  TODO:
-    * Calculate the RMSE here.
-  */
-}
+ int Dim = Mat_in.cols();
 
-MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
-  /**
-  TODO:
-    * Calculate a Jacobian here.
-  */
+ for (int i = 0; i < Dim; ++i){
+   while (Mat_in.col(i)(Row_in) > M_PI)
+     Mat_in.col(i)(Row_in) -= 2.*M_PI;
+   while (Mat_in.col(i)(Row_in) < -M_PI)
+     Mat_in.col(i)(Row_in) += 2.*M_PI;
+ }
 }

@@ -2,8 +2,7 @@
 #include <iostream>
 #include "json.hpp"
 #include <math.h>
-#include "FusionEKF.h"
-#include "tools.h"
+#include "fusion_kf.h"
 
 using namespace std;
 
@@ -35,12 +34,11 @@ int main()
   FKF.AddLaserLKF();
   FKF.AddRadarEKF();
 
-  // used to compute the RMSE later
-  Tools tools;
+  // used to compute the RMSE later  
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
 
-  h.onMessage([&FKF,&tools,&estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
+  h.onMessage([&FKF, &estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
