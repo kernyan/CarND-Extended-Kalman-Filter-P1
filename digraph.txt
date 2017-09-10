@@ -1,0 +1,33 @@
+digraph G {
+
+# parameters
+
+node [shape=box,style=filled,color=".7 .3 1.0"];
+
+# relationships
+
+ParaKF -> LinKF
+ParaKF -> UnscentedKF
+
+LinKF -> ExtKF
+LinKF -> LaserLKF
+
+ExtKF -> RadarEKF
+
+UnscentedKF -> RadarUKF
+UnscentedKF -> LaserUKF
+
+# nodes
+
+ParaKF      [label="ParametricKF\n (Abstract Interface)"];
+LinKF       [label="LinearKF"];
+ExtKF       [label="ExtendedKF"];
+LaserLKF    [label="LaserLKF\n (Constant Velocity, LinearKF)"];
+RadarEKF    [label="RadarEKF\n (Constant Velocity, ExtendedKF)"];
+UnscentedKF [label="UnscentedKF"];
+RadarUKF    [label="RadarUKF\n (CTRV model, UnscentedKF)"];
+LaserUKF    [label="LaserUKF\n (CTRV model, UnscentedKF)"];
+
+}
+
+
